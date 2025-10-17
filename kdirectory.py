@@ -4,7 +4,7 @@ Sample code for using webexteamsbot
 """
 
 import os
-import requests
+#import requests
 from webexteamsbot import TeamsBot
 from webexteamsbot.models import Response
 import sys
