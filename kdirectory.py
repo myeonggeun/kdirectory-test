@@ -121,15 +121,15 @@ def greeting(incoming_msg):
                 "items": [
                 {
                     "type": "TextBlock",
-                    "text": Name
+                    "text": "🪪 " + Name
                 },
                  {
                     "type": "TextBlock",
-                    "text": Email + "@cisco.com"
+                    "text": "📧 " + Email + "@cisco.com"
                 },
                 {
                     "type": "TextBlock",
-                    "text": Mobile
+                    "text": "📱 " + Mobile
                 },
                ]
             }],
@@ -176,7 +176,7 @@ def show_card(incoming_msg):
                 "type": "Container",
                 "items": [{
                     "type": "TextBlock",
-                    "text": f"This is a sample {Email} of the adaptive card system."
+                    "text": "This is a sample of the adaptive card system."
                 }]
             }],
             "actions": [{
