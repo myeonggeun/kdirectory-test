@@ -118,9 +118,18 @@ def greeting(incoming_msg):
             "type": "AdaptiveCard",
             "body": [{
                 "type": "Container",
-                "items": [{
+                "items": [
+                {
                     "type": "TextBlock",
-                    "text": f"This is a sample {Email} of the adaptive card system."
+                    "text": "{n}"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "{e}"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "{m}"
                 }]
             }],
             "actions": [{
@@ -142,14 +151,14 @@ def greeting(incoming_msg):
             "version": "1.0"
         }
     }
-    """
+    """.format(n = Name, e = Email , m = Mobile)
     backupmessage = "This is an example using Adaptive Cards."
 
     c = create_message_with_attachment(
         incoming_msg.roomId, msgtxt=backupmessage, attachment=json.loads(attachment)
     )
     print(c)
-    
+
     return response
 
 
