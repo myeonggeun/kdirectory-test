@@ -150,6 +150,23 @@ def search(incoming_msg):
 # put it inside of the "content" below, otherwise Webex won't understand
 # what you send it.
 def show_card(incoming_msg):
+    msg = ""
+    NIndex = indices(KName, incoming_msg)
+
+    if NIndex != []:
+        for position in NIndex:
+
+            Email = Korea_directory[position]["Email"]
+            Name = Korea_directory[position]["Name"]
+            Mobile = Korea_directory[position]["Mobile"]
+
+            msg = Email + "@cisco.com" + "  " + "["+Name+"](https://cisco.webex.com/join/"+Email+")"  + " " + Mobile
+        print(msg)
+
+    else:
+        msg = incoming_msg + " " + "이름을 다시 확인해주세요"
+        print(msg)
+
     attachment = """
     {
         "contentType": "application/vnd.microsoft.card.adaptive",
@@ -159,7 +176,7 @@ def show_card(incoming_msg):
                 "type": "Container",
                 "items": [{
                     "type": "TextBlock",
-                    "text": "This is a sample of the adaptive card system."
+                    "text": f"This is a sample {Email} of the adaptive card system."
                 }]
             }],
             "actions": [{
