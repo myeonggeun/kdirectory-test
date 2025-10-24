@@ -101,6 +101,7 @@ def greeting(incoming_msg):
 
             Email = Korea_directory[position]["Email"]
             Name = Korea_directory[position]["Name"]
+            Name = str(Name)
             Mobile = Korea_directory[position]["Mobile"]
 
             msg = Email + "@cisco.com" + "  " + "["+Name+"](https://cisco.webex.com/join/"+Email+")"  + " " + Mobile
