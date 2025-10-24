@@ -123,14 +123,7 @@ def greeting(incoming_msg):
                     "type": "TextBlock",
                     "text": "{n}"
                 },
-                {
-                    "type": "TextBlock",
-                    "text": "{e}"
-                },
-                {
-                    "type": "TextBlock",
-                    "text": "{m}"
-                }]
+               ]
             }],
             "actions": [{
                     "type": "Action.Submit",
@@ -151,7 +144,7 @@ def greeting(incoming_msg):
             "version": "1.0"
         }
     }
-    """.format(n = Name, e = Email , m = Mobile)
+    """.format(n = Name)
     backupmessage = "This is an example using Adaptive Cards."
 
     c = create_message_with_attachment(
