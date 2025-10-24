@@ -101,7 +101,6 @@ def greeting(incoming_msg):
 
             Email = Korea_directory[position]["Email"]
             Name = Korea_directory[position]["Name"]
-            Name = str(Name)
             Mobile = Korea_directory[position]["Mobile"]
 
             msg = Email + "@cisco.com" + "  " + "["+Name+"](https://cisco.webex.com/join/"+Email+")"  + " " + Mobile
@@ -124,6 +123,14 @@ def greeting(incoming_msg):
                     "type": "TextBlock",
                     "text": Name
                 },
+                 {
+                    "type": "TextBlock",
+                    "text": Email + "@cisco.com"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": Mobile
+                },
                ]
             }],
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -141,36 +148,14 @@ def greeting(incoming_msg):
     )
     print(c)
 
-    return response
+    return ""
 
 
 # Create functions that will be linked to bot commands to add capabilities
 # ------------------------------------------------------------------------
 
 # A simple command that returns a basic string that will be sent as a reply
-def search(incoming_msg):
-    """
-    Sample function to do some action.
-    :param incoming_msg: The incoming message object from Teams
-    :return: A text or markdown based reply
-    """
-    msg = ""
-    NIndex = indices(KName, incoming_msg)
 
-    if NIndex != []:
-        for position in NIndex:
-
-            Email = Korea_directory[position]["Email"]
-            Name = Korea_directory[position]["Name"]
-            Mobile = Korea_directory[position]["Mobile"]
-
-            msg = Email + "@cisco.com" + "  " + "["+Name+"](https://cisco.webex.com/join/"+Email+")"  + " " + Mobile
-        print(msg)
-
-    else:
-        msg = incoming_msg + " " + "이름을 다시 확인해주세요"
-        print(msg)
-    return "i did what you said - {}".format(incoming_msg.text)
 
 
 # This function generates a basic adaptive card and sends it to the user
@@ -332,7 +317,7 @@ bot.set_greeting(greeting)
 # Add new commands to the bot.
 bot.add_command("attachmentActions", "*", handle_cards)
 bot.add_command("/showcard", "show an adaptive card", show_card)
-bot.add_command("/search", "search for korean name", search)
+
 bot.add_command(
     "/demo", "Sample that creates a Teams message to be returned.", ret_message
 )
