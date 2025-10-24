@@ -4,7 +4,7 @@ Sample code for using webexteamsbot
 """
 
 import os
-#import requests
+import requests
 from webexteamsbot import TeamsBot
 from webexteamsbot.models import Response
 import sys
@@ -23,6 +23,8 @@ bot_app_name = os.getenv("TEAMS_BOT_APP_NAME")
 # approved_users = [
 #     "josmith@demo.local",
 # ]
+
+
 
 # If any of the bot environment variables are missing, terminate the app
 if not bot_email or not teams_token or not bot_url or not bot_app_name:
