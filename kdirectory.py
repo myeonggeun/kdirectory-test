@@ -110,6 +110,46 @@ def greeting(incoming_msg):
         msg = incoming_msg.text + " " + "이름을 다시 확인해주세요"
         print(msg)
     response.markdown = msg
+
+    attachment = """
+    {
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+            "type": "AdaptiveCard",
+            "body": [{
+                "type": "Container",
+                "items": [{
+                    "type": "TextBlock",
+                    "text": f"This is a sample {Email} of the adaptive card system."
+                }]
+            }],
+            "actions": [{
+                    "type": "Action.Submit",
+                    "title": "Create",
+                    "data": "add",
+                    "style": "positive",
+                    "id": "button1"
+                },
+                {
+                    "type": "Action.Submit",
+                    "title": "Delete",
+                    "data": "remove",
+                    "style": "destructive",
+                    "id": "button2"
+                }
+            ],
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.0"
+        }
+    }
+    """
+    backupmessage = "This is an example using Adaptive Cards."
+
+    c = create_message_with_attachment(
+        incoming_msg.roomId, msgtxt=backupmessage, attachment=json.loads(attachment)
+    )
+    print(c)
+    
     return response
 
 
@@ -150,23 +190,7 @@ def search(incoming_msg):
 # put it inside of the "content" below, otherwise Webex won't understand
 # what you send it.
 def show_card(incoming_msg):
-    msg = ""
-    NIndex = indices(KName, incoming_msg)
-
-    if NIndex != []:
-        for position in NIndex:
-
-            Email = Korea_directory[position]["Email"]
-            Name = Korea_directory[position]["Name"]
-            Mobile = Korea_directory[position]["Mobile"]
-
-            msg = Email + "@cisco.com" + "  " + "["+Name+"](https://cisco.webex.com/join/"+Email+")"  + " " + Mobile
-        print(msg)
-
-    else:
-        msg = incoming_msg + " " + "이름을 다시 확인해주세요"
-        print(msg)
-
+   
     attachment = """
     {
         "contentType": "application/vnd.microsoft.card.adaptive",
