@@ -121,15 +121,15 @@ def greeting(incoming_msg):
                 "items": [
                 {
                     "type": "TextBlock",
-                    "text": "🪪 " + Name
+                    "text": "🙂  " + Name
                 },
                  {
                     "type": "TextBlock",
-                    "text": "📧 " + Email + "@cisco.com"
+                    "text": "📧  " + Email + "@cisco.com"
                 },
                 {
                     "type": "TextBlock",
-                    "text": "📱 " + Mobile
+                    "text": "📱  " + Mobile
                 },
                ]
             }],
