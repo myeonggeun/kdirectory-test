@@ -112,40 +112,28 @@ def greeting(incoming_msg):
         print(msg)
     response.markdown = msg
 
-    attachment = """
-    {
+
+    attachement_dict = {
         "contentType": "application/vnd.microsoft.card.adaptive",
-        "content": {
+        "content" : {
             "type": "AdaptiveCard",
             "body": [{
                 "type": "Container",
                 "items": [
                 {
                     "type": "TextBlock",
-                    "text": "{n}"
+                    "text": Name
                 },
                ]
             }],
-            "actions": [{
-                    "type": "Action.Submit",
-                    "title": "Create",
-                    "data": "add",
-                    "style": "positive",
-                    "id": "button1"
-                },
-                {
-                    "type": "Action.Submit",
-                    "title": "Delete",
-                    "data": "remove",
-                    "style": "destructive",
-                    "id": "button2"
-                }
-            ],
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
             "version": "1.0"
         }
     }
-    """.format(n = Name)
+    
+    attachment_json = json.dumps(attachement_dict, ensure_ascii=False, indent=2)
+
+    attachment = attachment_json
     backupmessage = "This is an example using Adaptive Cards."
 
     c = create_message_with_attachment(
